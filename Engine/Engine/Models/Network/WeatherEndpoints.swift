@@ -9,23 +9,21 @@ import Foundation
 
 enum WeatherEndpoints: Endpoint {
     case onecall
-    case endpoint2
+    case currentWeather
     
     var verb: HTTPVerb {
         switch self {
-            case .onecall:
+            case .onecall, .currentWeather:
                 return .get
-            case .endpoint2:
-                return .post
         }
     }
     
     var path: String {
         switch self {
             case .onecall:
-                return "/onecall"
-            case .endpoint2:
-                return "/api/..."
+                return "/data/3.0/onecall"
+            case .currentWeather:
+                return "/data/2.5/weather"
         }
     }
 }

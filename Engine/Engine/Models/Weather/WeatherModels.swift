@@ -7,74 +7,57 @@
 
 import Foundation
 
-// MARK: - Welcome
-public struct Welcome: Codable {
-    let lat, lon: Double?
-    let timezone: String?
-    let timezoneOffset: Int?
-    let current: Current?
-    let minutely: [Minutely]?
-    let hourly: [Current]?
-    let daily: [Daily]?
-    let alerts: [Alert]?
-}
-
-// MARK: - Alert
-public struct Alert: Codable {
-    let senderName, event: String?
-    let start, end: Int?
-    let description: String?
-    let tags: [String]?
-}
-
 // MARK: - Current
 public struct Current: Codable {
-    let dt, sunrise, sunset: Int?
-    let temp, feelsLike: Double?
-    let pressure, humidity: Int?
-    let dewPoint, uvi: Double?
-    let clouds, visibility: Int?
-    let windSpeed: Double?
-    let windDeg: Int?
-    let windGust: Double?
+    let id: Int
+    let base: String?
+    let dt: Int?
+    let main: Main?
+    let coord: Coord?
+    let wind: Wind?
+    let sys: Sys?
     let weather: [Weather]?
-    let pop: Double?
+    let visibility: Int?
+    let clouds: Clouds?
+    let timezone, cod: Int?
+    let name: String?
+}
+
+// MARK: - Clouds
+public struct Clouds: Codable {
+    let all: Int?
+}
+
+// MARK: - Coord
+public struct Coord: Codable {
+    let lon, lat: Double?
+}
+
+// MARK: - Main
+public struct Main: Codable {
+    let temp: Double?
+    let tempMin: Double?
+    let tempMax: Double?
+    let feelsLike: Double?
+    let humidity: Int?
+    let pressure: Int?
+}
+
+// MARK: - Sys
+public struct Sys: Codable {
+    let id: Int
+    let country: String?
+    let sunset, type, sunrise: Int?
 }
 
 // MARK: - Weather
 public struct Weather: Codable {
-    let id: Int?
-    let main, description, icon: String?
+    let id: Int
+    let main, icon, description: String?
 }
 
-// MARK: - Daily
-public struct Daily: Codable {
-    let dt, sunrise, sunset, moonrise: Int?
-    let moonset: Int?
-    let moonPhase: Double?
-    let temp: Temp?
-    let feelsLike: FeelsLike?
-    let pressure, humidity: Int?
-    let dewPoint, windSpeed: Double?
-    let windDeg: Int?
-    let windGust: Double?
-    let weather: [Weather]?
-    let clouds: Int?
-    let pop, rain, uvi: Double?
-}
-
-// MARK: - FeelsLike
-public struct FeelsLike: Codable {
-    let day, night, eve, morn: Double?
-}
-
-// MARK: - Temp
-public struct Temp: Codable {
-    let day, min, max, night: Double?
-    let eve, morn: Double?
-}
-
-// MARK: - Minutely
-public struct Minutely: Codable {
-    let dt, precipitation: Int?
+// MARK: - Wind
+public struct Wind: Codable {
+    let speed: Double?
+    let deg: Int?
 }

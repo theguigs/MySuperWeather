@@ -1,40 +1,40 @@
 //
-//  WeatherService.swift
+//  CitiesService.swift
 //  Engine
 //
-//  Created by Guillaume Audinet on 09/03/2023.
+//  Created by Guillaume Audinet on 11/03/2023.
 //
 
 import Foundation
 
-public class WeatherService {
+public class CitiesService {
     let networkClient: NetworkClient
+    
+    public var cities: [City] = []
     
     init(networkClient: NetworkClient) {
         self.networkClient = networkClient
     }
         
-    public func fetchCurrentWeather(completion: @escaping (Current?, Error?) -> Void) {
+    public func fetchCities(for query: String, completion: @escaping ([City]?, Error?) -> Void) {
         let dict: [String: Any] = [
-            "lat": 48.856613,
-            "lon": 2.352222,
-            "units": "metric",
-            "lang": "fr",
+            "q": query,
+            "limit": 5,
             "appid": K.OpenWeatherMap.ApiKey
         ]
         
         networkClient.call(
-            endpoint: WeatherEndpoints.currentWeather,
+            endpoint: GeocodingEndpoints.geocoding,
             dict: dict,
             parameterEncoding: .URL
         ) { result in
             switch result {
                 case .success((let data, _)):
                     do {
-                        let current = try JSONDecoder.snakeDecoder.decode(Current.self, from: data)
-                        completion(current, nil)
+                        let cities = try JSONDecoder.snakeDecoder.decode([City].self, from: data)
+                        completion(cities, nil)
                     } catch let error {
-                        ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
+                        ELOG("[CitiesService] fetchCities error : \(error)")
                         completion(nil, error)
                     }
                 case .failure(let error):
@@ -44,4 +44,5 @@ public class WeatherService {
         }
         
     }
+
 }

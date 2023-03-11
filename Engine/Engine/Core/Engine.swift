@@ -8,9 +8,10 @@
 import Foundation
 
 public class Engine {
-    public var weatherService: WeatherService
-
     private let networkClient: NetworkClient
+
+    public var weatherService: WeatherService
+    public var citiesService: CitiesService
 
     public init(
         configuration: EngineConfiguration
@@ -18,5 +19,6 @@ public class Engine {
         self.networkClient = NetworkClient(configuration: configuration)
         
         self.weatherService = WeatherService(networkClient: networkClient)
+        self.citiesService = CitiesService(networkClient: networkClient)
     }
 }
