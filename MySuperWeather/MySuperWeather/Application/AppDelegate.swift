@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var engine: Engine?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        guard let baseURL = URL(string: "https://api.openweathermap.org/data/3.0") else {
+        guard let baseURL = URL(string: "https://api.openweathermap.org") else {
             fatalError("Base URL is not a valid URL")
         }
         
@@ -26,7 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let engine = Engine(configuration: configuration)
         self.engine = engine
 
-        window?.rootViewController = ViewController(engine: engine)
+        let citiesViewController = CitiesViewController(engine: engine)
+        let navController = UINavigationController(rootViewController: citiesViewController)
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
         return true

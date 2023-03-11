@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Engine
 
 class ViewController: EngineViewController {
 
@@ -15,7 +16,12 @@ class ViewController: EngineViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .red
         
-        engine.weatherService.fetchData { Welcome, error in
+        
+//        engine.weatherService.fetchCurrentWeather { d, e in
+//            print("")
+//        }
+        
+        engine.citiesService.fetchCities(for: "Paris") { cities, error in
             print("")
         }
     }
