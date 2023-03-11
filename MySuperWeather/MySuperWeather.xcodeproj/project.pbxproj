@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D41379DA29BD3FE800BCD3B1 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41379D829BD3FE800BCD3B1 /* CitiesViewController.swift */; };
 		D41379DB29BD3FE800BCD3B1 /* CitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41379D929BD3FE800BCD3B1 /* CitiesViewController.xib */; };
+		D41379DE29BD487000BCD3B1 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41379DC29BD487000BCD3B1 /* AddCityViewController.swift */; };
+		D41379DF29BD487000BCD3B1 /* AddCityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D41379DD29BD487000BCD3B1 /* AddCityViewController.xib */; };
 		D4594E3A29BA44E7007A2586 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4594E3929BA44E7007A2586 /* Engine.framework */; };
 		D4594E3B29BA44E7007A2586 /* Engine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D4594E3929BA44E7007A2586 /* Engine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D4594E5229BCD2ED007A2586 /* EngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4594E5129BCD2ED007A2586 /* EngineViewController.swift */; };
@@ -35,6 +37,8 @@
 /* Begin PBXFileReference section */
 		D41379D829BD3FE800BCD3B1 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
 		D41379D929BD3FE800BCD3B1 /* CitiesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CitiesViewController.xib; sourceTree = "<group>"; };
+		D41379DC29BD487000BCD3B1 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
+		D41379DD29BD487000BCD3B1 /* AddCityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCityViewController.xib; sourceTree = "<group>"; };
 		D4594E3929BA44E7007A2586 /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4594E5129BCD2ED007A2586 /* EngineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineViewController.swift; sourceTree = "<group>"; };
 		D49CE0B029BA3F7D00220C9D /* MySuperWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySuperWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +74,8 @@
 			children = (
 				D41379D829BD3FE800BCD3B1 /* CitiesViewController.swift */,
 				D41379D929BD3FE800BCD3B1 /* CitiesViewController.xib */,
+				D41379DC29BD487000BCD3B1 /* AddCityViewController.swift */,
+				D41379DD29BD487000BCD3B1 /* AddCityViewController.xib */,
 			);
 			path = Cities;
 			sourceTree = "<group>";
@@ -207,6 +213,7 @@
 				D49CE0C029BA3F7E00220C9D /* LaunchScreen.storyboard in Resources */,
 				D41379DB29BD3FE800BCD3B1 /* CitiesViewController.xib in Resources */,
 				D49CE0BD29BA3F7E00220C9D /* Assets.xcassets in Resources */,
+				D41379DF29BD487000BCD3B1 /* AddCityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41379DE29BD487000BCD3B1 /* AddCityViewController.swift in Sources */,
 				D49CE0B829BA3F7D00220C9D /* ViewController.swift in Sources */,
 				D41379DA29BD3FE800BCD3B1 /* CitiesViewController.swift in Sources */,
 				D49CE0B429BA3F7D00220C9D /* AppDelegate.swift in Sources */,

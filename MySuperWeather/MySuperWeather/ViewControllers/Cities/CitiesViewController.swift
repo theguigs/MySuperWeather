@@ -18,11 +18,29 @@ class CitiesViewController: EngineViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        emptyListView.isHidden = !engine.citiesService.cities.isEmpty
-        tableView.isHidden = engine.citiesService.cities.isEmpty
+        configureNavigationBar()
+        
+        showHideSections()
 
         configureTableView()
         configureButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func configureNavigationBar() {
+        title = "Mes villes"
+        
+        let rightItem = UIBarButtonItem(image: UIImage(named: "plus"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(addCity))
+        rightItem.tintColor = .black
+        navigationItem.rightBarButtonItem = rightItem
     }
 
     private func configureTableView() {
@@ -34,10 +52,21 @@ class CitiesViewController: EngineViewController {
     
     private func configureButton() {
         addCityButton.layer.cornerRadius = 8.0
-        addCityButton.layer.borderWidth = 1.0
+        addCityButton.layer.borderWidth = 2.0
+    }
+    
+    private func showHideSections() {
+        emptyListView.isHidden = !engine.citiesService.cities.isEmpty
+        tableView.isHidden = engine.citiesService.cities.isEmpty
+    }
+    
+    @objc func addCity() {
+        let addCityViewController = AddCityViewController(engine: engine, delegate: self)
+        present(addCityViewController, animated: true)
     }
     
     @IBAction func addCityDidTouchUpInside(_ sender: Any) {
+        addCity()
     }
 }
 
@@ -51,5 +80,12 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
         let city = engine.citiesService.cities[indexPath.row]
         cell.textLabel?.text = city.name
         return cell
+    }
+}
+
+extension CitiesViewController: AddCityViewControllerDelegate {
+    func addCityViewControllerDidAddCity(_ vc: AddCityViewController) {
+        showHideSections()
+        tableView.reloadData()
     }
 }
