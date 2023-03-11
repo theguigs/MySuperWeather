@@ -153,3 +153,5 @@ build/*
 # Exclude OS X folder attributes
 .DS_Store
 *.orig
+
+Test_iOS_FR.pdf
