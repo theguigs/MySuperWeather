@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "FJ.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "FJ@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "FJ@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

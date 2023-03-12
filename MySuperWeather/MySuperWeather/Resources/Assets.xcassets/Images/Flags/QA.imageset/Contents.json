@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "QA.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "QA@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "QA@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

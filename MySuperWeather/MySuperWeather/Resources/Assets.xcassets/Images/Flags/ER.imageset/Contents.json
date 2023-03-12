@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "ER.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "ER@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "ER@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

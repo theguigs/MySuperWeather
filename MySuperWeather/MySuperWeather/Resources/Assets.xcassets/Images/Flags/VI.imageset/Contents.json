@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "VI.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "VI@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "VI@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

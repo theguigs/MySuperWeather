@@ -52,7 +52,7 @@ class CityTableViewCell: UITableViewCell {
             coordinateLabel.isHidden = true
             return
         }
-        
-        coordinateLabel.text = "\(lat), \(lon)"
+                
+        coordinateLabel.text = "\(lat.rounded(decimalCount: 4)), \(lon.rounded(decimalCount: 4))"
     }
 }

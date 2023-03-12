@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "GB-SCT.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "GB-SCT@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "GB-SCT@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

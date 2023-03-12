@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "UZ.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "UZ@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "UZ@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

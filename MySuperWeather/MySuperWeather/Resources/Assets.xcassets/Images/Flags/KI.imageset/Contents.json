@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "KI.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "KI@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "KI@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

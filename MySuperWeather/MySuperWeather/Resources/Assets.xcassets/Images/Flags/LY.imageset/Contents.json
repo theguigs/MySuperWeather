@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "LY.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "LY@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "LY@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

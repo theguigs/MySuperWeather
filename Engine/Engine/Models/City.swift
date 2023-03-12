@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // MARK: - City
 public struct City: Codable {
@@ -14,4 +15,9 @@ public struct City: Codable {
     public let lat, lon: Double?
     public let country: String?
     public let state: String?
+    
+    public var location: CLLocation? {
+        guard let lat, let lon else { return nil }
+        return CLLocation(latitude: lat, longitude: lon)
+    }
 }

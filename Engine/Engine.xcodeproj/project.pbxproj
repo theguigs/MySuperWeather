@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D41379E129BD4A4500BCD3B1 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41379E029BD4A4500BCD3B1 /* Debouncer.swift */; };
+		D41379E829BD56C600BCD3B1 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41379E729BD56C600BCD3B1 /* Double+Extensions.swift */; };
 		D4594E3529BA448F007A2586 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4594E3429BA448F007A2586 /* Engine.swift */; };
 		D4594E3729BA449E007A2586 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4594E3629BA449E007A2586 /* NetworkClient.swift */; };
 		D4594E3E29BA457D007A2586 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4594E3D29BA457D007A2586 /* Endpoint.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		D41379E029BD4A4500BCD3B1 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		D41379E729BD56C600BCD3B1 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		D4594E3429BA448F007A2586 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		D4594E3629BA449E007A2586 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		D4594E3D29BA457D007A2586 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -82,6 +84,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D41379E629BD56AF00BCD3B1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D4594E4829BB613B007A2586 /* URLRequest+Extensions.swift */,
+				D4594E4A29BB61AD007A2586 /* Data+Extensions.swift */,
+				D4594E4F29BCD263007A2586 /* JSONDecoder+Extensions.swift */,
+				D41379E729BD56C600BCD3B1 /* Double+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D4594E2F29BA441D007A2586 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,11 +116,9 @@
 		D4594E3129BA442F007A2586 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				D4594E4629BB5C19007A2586 /* Logger.swift */,
-				D4594E4829BB613B007A2586 /* URLRequest+Extensions.swift */,
-				D4594E4A29BB61AD007A2586 /* Data+Extensions.swift */,
-				D4594E4F29BCD263007A2586 /* JSONDecoder+Extensions.swift */,
+				D41379E629BD56AF00BCD3B1 /* Extensions */,
 				D4594E5529BD3993007A2586 /* Constants.swift */,
+				D4594E4629BB5C19007A2586 /* Logger.swift */,
 				D41379E029BD4A4500BCD3B1 /* Debouncer.swift */,
 			);
 			path = Utils;
@@ -310,6 +321,7 @@
 				D4594E3729BA449E007A2586 /* NetworkClient.swift in Sources */,
 				D4594E4329BA4651007A2586 /* WeatherService.swift in Sources */,
 				D4594E4129BA45C3007A2586 /* WeatherEndpoints.swift in Sources */,
+				D41379E829BD56C600BCD3B1 /* Double+Extensions.swift in Sources */,
 				D4594E4729BB5C19007A2586 /* Logger.swift in Sources */,
 				D4594E5629BD3993007A2586 /* Constants.swift in Sources */,
 				D41379E129BD4A4500BCD3B1 /* Debouncer.swift in Sources */,

@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "SG.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "SG@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "SG@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "GB-NIR.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "GB-NIR@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "GB-NIR@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

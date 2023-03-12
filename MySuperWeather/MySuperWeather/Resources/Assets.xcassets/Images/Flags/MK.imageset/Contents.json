@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "MK.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "MK@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "MK@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

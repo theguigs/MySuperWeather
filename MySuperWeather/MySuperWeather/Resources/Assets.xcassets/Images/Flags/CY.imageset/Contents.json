@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "CY.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "CY@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "CY@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

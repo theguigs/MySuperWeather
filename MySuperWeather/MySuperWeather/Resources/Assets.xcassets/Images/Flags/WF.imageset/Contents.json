@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "WF.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
       "filename" : "WF@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "WF@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {
