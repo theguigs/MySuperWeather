@@ -16,6 +16,7 @@ class CityTableViewCell: UITableViewCell {
     @IBOutlet private weak var coordinateLabel: UILabel!
 
     @IBOutlet private weak var currentWeatherImageView: UIImageView!
+    @IBOutlet private weak var currentTemperatureLabel: UILabel!
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -37,6 +38,7 @@ class CityTableViewCell: UITableViewCell {
         configureLatLonLabel(city: city)
         
         configureCurrentWeatherImageView(current: current)
+        configureCurrentTemperatureLabel(current: current)
     }
     
     private func configureFlagImageView(city: GeocodedCity) {
@@ -70,5 +72,21 @@ class CityTableViewCell: UITableViewCell {
         }
         
         currentWeatherImageView.image = image
+    }
+    
+    private func configureCurrentTemperatureLabel(current: Current?) {
+        guard let current = current,
+              let temp = current.main?.temp else {
+            return
+        }
+        
+        let measurement = Measurement(value: temp, unit: UnitTemperature.celsius)
+        
+        let measurementFormatter = MeasurementFormatter()
+        measurementFormatter.unitStyle = .short
+        measurementFormatter.numberFormatter.maximumFractionDigits = 0
+        measurementFormatter.unitOptions = .providedUnit
+
+        currentTemperatureLabel.text = measurementFormatter.string(from: measurement)
     }
 }
