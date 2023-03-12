@@ -10,13 +10,13 @@ import Foundation
 public class CitiesService {
     let networkClient: NetworkClient
     
-    public var cities: [City] = []
+    public var cities: [GeocodedCity] = []
     
     init(networkClient: NetworkClient) {
         self.networkClient = networkClient
     }
         
-    public func fetchCities(for query: String, completion: @escaping ([City]?, Error?) -> Void) {
+    public func fetchCities(for query: String, completion: @escaping ([GeocodedCity]?, Error?) -> Void) {
         let dict: [String: Any] = [
             "q": query,
             "limit": 5,
@@ -31,7 +31,7 @@ public class CitiesService {
             switch result {
                 case .success((let data, _)):
                     do {
-                        let cities = try JSONDecoder.snakeDecoder.decode([City].self, from: data)
+                        let cities = try JSONDecoder.snakeDecoder.decode([GeocodedCity].self, from: data)
                         completion(cities, nil)
                     } catch let error {
                         ELOG("[CitiesService] fetchCities error : \(error)")

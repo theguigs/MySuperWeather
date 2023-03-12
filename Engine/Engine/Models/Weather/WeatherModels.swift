@@ -7,57 +7,46 @@
 
 import Foundation
 
-// MARK: - Current
-public struct Current: Codable {
-    let id: Int
-    let base: String?
-    let dt: Int?
-    let main: Main?
-    let coord: Coord?
-    let wind: Wind?
-    let sys: Sys?
-    let weather: [Weather]?
-    let visibility: Int?
-    let clouds: Clouds?
-    let timezone, cod: Int?
-    let name: String?
-}
-
 // MARK: - Clouds
 public struct Clouds: Codable {
-    let all: Int?
+    public let all: Int?
 }
 
 // MARK: - Coord
 public struct Coord: Codable {
-    let lon, lat: Double?
+    public let lon, lat: Double?
 }
 
 // MARK: - Main
 public struct Main: Codable {
-    let temp: Double?
-    let tempMin: Double?
-    let tempMax: Double?
-    let feelsLike: Double?
-    let humidity: Int?
-    let pressure: Int?
+    public let temp: Double?
+    public let tempMin: Double?
+    public let tempMax: Double?
+    public let feelsLike: Double?
+    public let humidity: Int?
+    public let pressure: Int?
+    
+    public let tempKf: Double?
+    public let seaLevel: Int?
+    public let grndLevel: Int?
 }
 
 // MARK: - Sys
 public struct Sys: Codable {
-    let id: Int
-    let country: String?
-    let sunset, type, sunrise: Int?
+    public let id: Int?
+    public let country: String?
+    public let sunset, type, sunrise: Int?
+    public let pod: String?
 }
 
 // MARK: - Weather
 public struct Weather: Codable {
-    let id: Int
-    let main, icon, description: String?
+    public let id: Int?
+    public let main, icon, description: String?
 }
 
 // MARK: - Wind
 public struct Wind: Codable {
-    let speed: Double?
-    let deg: Int?
+    public let speed: Double?
+    public let deg: Int?
 }

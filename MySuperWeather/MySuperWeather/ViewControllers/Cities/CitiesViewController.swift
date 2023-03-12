@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Engine
 
 class CitiesViewController: EngineViewController {
     
@@ -86,15 +87,43 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let city = engine.citiesService.cities[indexPath.row]
-        cell.configure(city: city)
+        let current = engine.weatherService.currentWeatherByCity[city]
+        cell.configure(city: city, current: current)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = engine.citiesService.cities[indexPath.row]
+        engine.weatherService.fetchHourlyWeather(city: city) { c, e in
+            print(c)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let city = engine.citiesService.cities[indexPath.row]
+
+        let delete = UIContextualAction(style: .destructive,
+                                        title: "Supprimer") { [weak self] _, _, _ in
+            guard let self else { return }
+            
+            self.engine.citiesService.cities.removeAll(where: { $0 == city })
+            self.tableView.deleteRows(at: [indexPath], with: .left)
+            
+            self.showHideSections()
+        }
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
 
 extension CitiesViewController: AddCityViewControllerDelegate {
-    func addCityViewControllerDidAddCity(_ vc: AddCityViewController) {
-        showHideSections()
-        tableView.reloadData()
+    func addCityViewControllerDidAddCity(_ vc: AddCityViewController, city: GeocodedCity) {
+        engine.weatherService.fetchCurrentWeather(city: city) { [weak self] current, error in
+            guard let self else { return }
+            
+            self.showHideSections()
+            self.tableView.reloadData()
+        }
     }
 }

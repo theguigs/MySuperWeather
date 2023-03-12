@@ -28,22 +28,29 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0R6-Bi-tNk">
-                                <rect key="frame" x="40" y="9.3333333333333321" width="274" height="36.333333333333343"/>
+                                <rect key="frame" x="40" y="9.3333333333333321" width="222" height="36.333333333333343"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RI4-Lr-wjW">
-                                        <rect key="frame" x="0.0" y="0.0" width="274" height="19.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="222" height="19.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zOJ-t4-VUC">
-                                        <rect key="frame" x="0.0" y="19.333333333333332" width="274" height="16.999999999999996"/>
+                                        <rect key="frame" x="0.0" y="19.333333333333332" width="222" height="16.999999999999996"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d" translatesAutoresizingMaskIntoConstraints="NO" id="gpU-J4-Gk5">
+                                <rect key="frame" x="278" y="9.6666666666666679" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="dNi-ah-Abd"/>
+                                    <constraint firstAttribute="height" constant="36" id="vwj-6G-Doj"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -58,12 +65,14 @@
             <connections>
                 <outlet property="cityNameLabel" destination="RI4-Lr-wjW" id="8cb-7Q-WNB"/>
                 <outlet property="coordinateLabel" destination="zOJ-t4-VUC" id="11J-4o-XoZ"/>
+                <outlet property="currentWeatherImageView" destination="gpU-J4-Gk5" id="hA5-hq-hx8"/>
                 <outlet property="flagImageView" destination="9wJ-Qc-jMe" id="YEd-MR-Xim"/>
             </connections>
             <point key="canvasLocation" x="33.587786259541986" y="29.225352112676056"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="FR" width="21" height="15"/>
+        <image name="01d" width="100" height="100"/>
+        <image name="FR" width="42" height="30"/>
     </resources>
 </document>

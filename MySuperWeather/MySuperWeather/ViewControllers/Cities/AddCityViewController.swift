@@ -9,7 +9,7 @@ import UIKit
 import Engine
 
 protocol AddCityViewControllerDelegate: AnyObject {
-    func addCityViewControllerDidAddCity(_ vc: AddCityViewController)
+    func addCityViewControllerDidAddCity(_ vc: AddCityViewController, city: GeocodedCity)
 }
 
 class AddCityViewController: EngineViewController {
@@ -18,7 +18,7 @@ class AddCityViewController: EngineViewController {
     @IBOutlet private weak var tableView: UITableView!
 
     private let debouncer = Debouncer()
-    private var geocodingResult: [City] = []
+    private var geocodingResult: [GeocodedCity] = []
     
     private weak var delegate: AddCityViewControllerDelegate?
     
@@ -89,10 +89,12 @@ extension AddCityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let city = geocodingResult[indexPath.row]
+        var city = geocodingResult[indexPath.row]
+        city.id = UUID()
+        
         engine.citiesService.cities.append(city)
         
-        delegate?.addCityViewControllerDidAddCity(self)
+        delegate?.addCityViewControllerDidAddCity(self, city: city)
         
         dismiss(animated: true)
     }
