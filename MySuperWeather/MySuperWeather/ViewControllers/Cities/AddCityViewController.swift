@@ -51,6 +51,8 @@ class AddCityViewController: EngineViewController {
         tableView.dataSource = self
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UINib(nibName: CityTableViewCell.kReuseIdentifier, bundle: nil),
+                           forCellReuseIdentifier: CityTableViewCell.kReuseIdentifier)
     }
 }
 
@@ -73,9 +75,16 @@ extension AddCityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: CityTableViewCell.kReuseIdentifier,
+            for: indexPath
+        ) as? CityTableViewCell else {
+            return UITableViewCell()
+        }
+        
         let city = geocodingResult[indexPath.row]
-        cell.textLabel?.text = city.name
+        cell.configure(city: city)
+        
         return cell
     }
     
