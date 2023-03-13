@@ -13,17 +13,25 @@ public class WeatherService {
     public var currentWeatherByCity: [GeocodedCity: Current] = [:]
     public var forecastWeatherByCity: [GeocodedCity: Forecast] = [:]
     public var dailyForecastWeatherByCity: [GeocodedCity: DailyForecast] = [:]
-
+    
     init(networkClient: NetworkClient) {
         self.networkClient = networkClient
     }
-        
+    
+    /// Fetch the current weather for a given city
+    ///
+    /// - Parameters:
+    ///     - city: City used to get lat & long param
+    ///
+    /// - Returns:
+    ///     - completion: Give a callback to handle WS response
+    ///                Producte tuple of 2 params (Current & Error) both optionals
     public func fetchCurrentWeather(city: GeocodedCity, completion: @escaping (Current?, Error?) -> Void) {
         guard let lat = city.lat, let lon = city.lon else {
             completion(nil, nil)
             return
         }
-
+        
         let dict: [String: Any] = [
             "lat": lat,
             "lon": lon,
@@ -56,6 +64,14 @@ public class WeatherService {
         }
     }
     
+    /// Fetch hourly weather forecast for a given city
+    ///
+    /// - Parameters:
+    ///     - city: City used to get lat & long param
+    ///
+    /// - Returns:
+    ///     - completion: Give a callback to handle WS response
+    ///                Producte tuple of 2 params (Forecast & Error) both optionals
     public func fetchHourlyWeather(city: GeocodedCity, completion: @escaping (Forecast?, Error?) -> Void) {
         guard let lat = city.lat, let lon = city.lon else {
             completion(nil, nil)
@@ -92,6 +108,14 @@ public class WeatherService {
             }
         }
     }
+    
+    /// Compute new model from fetchHourlyWeather response
+    ///
+    /// - Parameters:
+    ///     - forecast: fetchHourlyWeather response
+    ///
+    /// - Returns:
+    ///     - DailyForecast: This new models provide data aggregated by days
 
     private func computeDailyForecast(forecast: Forecast) -> DailyForecast {
         let list = forecast.list ?? []

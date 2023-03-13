@@ -8,6 +8,7 @@
 import Foundation
 
 extension Data {
+    /// Pretty printer for json
     var prettyPrintedJSONString: String? {
         guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
               let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),

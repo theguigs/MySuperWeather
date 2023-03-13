@@ -46,6 +46,14 @@ public class CitiesService: AsyncCacheHandling {
         }
     }
         
+    /// Fetch cities from a given string query
+    ///
+    /// - Parameters:
+    ///     - query: String query from TextField
+    ///
+    /// - Returns:
+    ///     - completion: Give a callback to handle WS response
+    ///                Producte tuple of 2 params ([GeocodedCity] & Error) both optionals
     public func fetchCities(for query: String, completion: @escaping ([GeocodedCity]?, Error?) -> Void) {
         let dict: [String: Any] = [
             "q": query,
