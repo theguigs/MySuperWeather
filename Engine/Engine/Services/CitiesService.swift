@@ -55,6 +55,11 @@ public class CitiesService: AsyncCacheHandling {
     ///     - completion: Give a callback to handle WS response
     ///                Producte tuple of 2 params ([GeocodedCity] & Error) both optionals
     public func fetchCities(for query: String, completion: @escaping ([GeocodedCity]?, Error?) -> Void) {
+        guard !query.isEmpty else {
+            completion([], nil)
+            return
+        }
+        
         let dict: [String: Any] = [
             "q": query,
             "limit": 5,
