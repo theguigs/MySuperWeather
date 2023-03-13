@@ -85,6 +85,8 @@ extension Array where Element == Forecast.List {
         var weather: Weather?
         if self.count >= 4 {
             weather = self[3].weather?.first
+        } else {
+            weather = self.first?.weather?.first
         }
         
         return DayForecast(
