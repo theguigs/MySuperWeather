@@ -24,6 +24,7 @@ class CityTableViewCell: UITableViewCell {
         flagImageView.isHidden = false
         coordinateLabel.isHidden = false
         currentWeatherImageView.isHidden = false
+        currentTemperatureLabel.isHidden = false
     }
     
     override func awakeFromNib() {
@@ -77,6 +78,7 @@ class CityTableViewCell: UITableViewCell {
     private func configureCurrentTemperatureLabel(current: Current?) {
         guard let current = current,
               let temp = current.main?.temp else {
+            currentTemperatureLabel.isHidden = true
             return
         }
         
