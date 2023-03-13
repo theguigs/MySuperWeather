@@ -36,9 +36,11 @@
 		D4867CE029BEBAFD0031483A /* ExpirableFileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */; };
 		D4867CE229BF396C0031483A /* CitiesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CE129BF396C0031483A /* CitiesServiceTests.swift */; };
 		D4867CE429BF41660031483A /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CE329BF41660031483A /* WeatherServiceTests.swift */; };
+		D4867CE629BF81A80031483A /* GeocodedCity.json in Resources */ = {isa = PBXBuildFile; fileRef = D4867CE529BF81A80031483A /* GeocodedCity.json */; };
+		D4867CE929BF84F40031483A /* CurrentWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = D4867CE829BF84F40031483A /* CurrentWeather.json */; };
+		D4867CEB29BF850F0031483A /* HourlyWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = D4867CEA29BF850F0031483A /* HourlyWeather.json */; };
 		D49CE0DB29BA431100220C9D /* Engine.docc in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0DA29BA431100220C9D /* Engine.docc */; };
 		D49CE0E129BA431100220C9D /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49CE0D629BA431100220C9D /* Engine.framework */; };
-		D49CE0E629BA431100220C9D /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0E529BA431100220C9D /* EngineTests.swift */; };
 		D49CE0E729BA431100220C9D /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = D49CE0D929BA431100220C9D /* Engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -82,11 +84,13 @@
 		D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirableFileDataStore.swift; sourceTree = "<group>"; };
 		D4867CE129BF396C0031483A /* CitiesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesServiceTests.swift; sourceTree = "<group>"; };
 		D4867CE329BF41660031483A /* WeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTests.swift; sourceTree = "<group>"; };
+		D4867CE529BF81A80031483A /* GeocodedCity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GeocodedCity.json; sourceTree = "<group>"; };
+		D4867CE829BF84F40031483A /* CurrentWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrentWeather.json; sourceTree = "<group>"; };
+		D4867CEA29BF850F0031483A /* HourlyWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HourlyWeather.json; sourceTree = "<group>"; };
 		D49CE0D629BA431100220C9D /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49CE0D929BA431100220C9D /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		D49CE0DA29BA431100220C9D /* Engine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Engine.docc; sourceTree = "<group>"; };
 		D49CE0E029BA431100220C9D /* EngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D49CE0E529BA431100220C9D /* EngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,16 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		D4867CE729BF82C30031483A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D4867CE529BF81A80031483A /* GeocodedCity.json */,
+				D4867CE829BF84F40031483A /* CurrentWeather.json */,
+				D4867CEA29BF850F0031483A /* HourlyWeather.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		D49CE0CC29BA431100220C9D = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +251,7 @@
 		D49CE0E429BA431100220C9D /* EngineTests */ = {
 			isa = PBXGroup;
 			children = (
-				D49CE0E529BA431100220C9D /* EngineTests.swift */,
+				D4867CE729BF82C30031483A /* Resources */,
 				D4867CE129BF396C0031483A /* CitiesServiceTests.swift */,
 				D4867CE329BF41660031483A /* WeatherServiceTests.swift */,
 			);
@@ -343,6 +357,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4867CEB29BF850F0031483A /* HourlyWeather.json in Resources */,
+				D4867CE929BF84F40031483A /* CurrentWeather.json in Resources */,
+				D4867CE629BF81A80031483A /* GeocodedCity.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +406,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4867CE229BF396C0031483A /* CitiesServiceTests.swift in Sources */,
-				D49CE0E629BA431100220C9D /* EngineTests.swift in Sources */,
 				D4867CE429BF41660031483A /* WeatherServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

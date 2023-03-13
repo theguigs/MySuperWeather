@@ -1,0 +1,43 @@
+{
+    "base" : "stations",
+    "id" : 6545270,
+    "dt" : 1678723856,
+    "main" : {
+        "temp_max" : 15.08,
+        "humidity" : 80,
+        "feels_like" : 13.289999999999999,
+        "temp_min" : 12.300000000000001,
+        "temp" : 13.77,
+        "pressure" : 997
+    },
+    "coord" : {
+        "lon" : 2.3199999999999998,
+        "lat" : 48.858899999999998
+    },
+    "wind" : {
+        "speed" : 8.2300000000000004,
+        "deg" : 190
+    },
+    "sys" : {
+        "id" : 2012208,
+        "country" : "FR",
+        "sunset" : 1678729889,
+        "type" : 2,
+        "sunrise" : 1678687759
+    },
+    "weather" : [
+        {
+            "id" : 804,
+            "main" : "Clouds",
+            "icon" : "04d",
+            "description" : "couvert"
+        }
+    ],
+    "visibility" : 10000,
+    "clouds" : {
+        "all" : 100
+    },
+    "timezone" : 3600,
+    "cod" : 200,
+    "name" : "Quartier du Palais-Royal"
+}

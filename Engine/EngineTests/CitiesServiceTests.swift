@@ -29,7 +29,7 @@ final class CitiesServiceTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testFetchCitiesWithResult() throws {
+    func testFetchingCitiesWithResult() throws {
         XCTAssertNotNil(engine)
         
         let didFetchCitiesExpectation = self.expectation(description: "Did fetch cities")
@@ -44,7 +44,7 @@ final class CitiesServiceTests: XCTestCase {
         wait(for: [didFetchCitiesExpectation], timeout: 1)
     }
     
-    func testFetchCitiesNoResult() throws {
+    func testFetchingCitiesNoResult() throws {
         XCTAssertNotNil(engine)
         
         let didFetchCitiesExpectation = self.expectation(description: "Did fetch cities")
@@ -88,4 +88,25 @@ final class CitiesServiceTests: XCTestCase {
         wait(for: [didFetchCitiesExpectation], timeout: 2)
     }
 
+    func testDecodingGeocodedCity() throws {
+        let bundle = Bundle(for: Self.self)
+        let path = try XCTUnwrap(bundle.path(forResource: "GeocodedCity", ofType: "json"))
+        let string = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+
+        let jsonData = try XCTUnwrap(string.data(using: .utf8))
+        
+        do {
+            let city = try JSONDecoder.snakeDecoder.decode(GeocodedCity.self, from: jsonData)
+            
+            XCTAssertNotNil(city.name)
+
+            XCTAssertNotNil(city.lat)
+            XCTAssertNotNil(city.lon)
+            
+            XCTAssertNotNil(city.state)
+            XCTAssertNotNil(city.localNames)
+        } catch _ {
+            XCTFail("Decoding GeocodedCity fails")
+        }
+    }
 }
