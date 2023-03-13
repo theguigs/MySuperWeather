@@ -7,14 +7,6 @@
 
 import Foundation
 
-extension DateFormatter {
-    static let hoursWithMillisecondsFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss.SSS"
-        return dateFormatter
-    }()
-}
-
 class Logger: NSObject {
     // MARK: Public interface
     enum LogCategory: String {

@@ -81,12 +81,7 @@ class CityTableViewCell: UITableViewCell {
         }
         
         let measurement = Measurement(value: temp, unit: UnitTemperature.celsius)
-        
-        let measurementFormatter = MeasurementFormatter()
-        measurementFormatter.unitStyle = .short
-        measurementFormatter.numberFormatter.maximumFractionDigits = 0
-        measurementFormatter.unitOptions = .providedUnit
 
-        currentTemperatureLabel.text = measurementFormatter.string(from: measurement)
+        currentTemperatureLabel.text = MeasurementFormatter.intWithUnitFormatter.string(from: measurement)
     }
 }

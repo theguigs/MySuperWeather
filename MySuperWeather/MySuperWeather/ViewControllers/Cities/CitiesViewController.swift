@@ -95,8 +95,18 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let city = engine.citiesService.cities[indexPath.row]
-        engine.weatherService.fetchHourlyWeather(city: city) { c, e in
-            print(c)
+        engine.weatherService.fetchHourlyWeather(city: city) { [weak self] forecast, error in
+            guard let self else { return }
+            guard let forecast else { return }
+            
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            let weatherDetailViewController = WeatherDetailViewController(
+                engine: self.engine,
+                city: city,
+                forecast: forecast
+            )
+            self.navigationController?.pushViewController(weatherDetailViewController, animated: true)
         }
     }
     

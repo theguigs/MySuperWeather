@@ -11,7 +11,9 @@ public class WeatherService {
     let networkClient: NetworkClient
     
     public var currentWeatherByCity: [GeocodedCity: Current] = [:]
-    
+    public var forecastWeatherByCity: [GeocodedCity: Forecast] = [:]
+    public var dailyForecastWeatherByCity: [GeocodedCity: DailyForecast] = [:]
+
     init(networkClient: NetworkClient) {
         self.networkClient = networkClient
     }
@@ -77,6 +79,8 @@ public class WeatherService {
                 case .success((let data, _)):
                     do {
                         let forecast = try JSONDecoder.snakeDecoder.decode(Forecast.self, from: data)
+                        self.forecastWeatherByCity[city] = forecast
+                        self.dailyForecastWeatherByCity[city] = self.computeDailyForecast(forecast: forecast)
                         completion(forecast, nil)
                     } catch let error {
                         ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
@@ -87,7 +91,18 @@ public class WeatherService {
                     completion(nil, error)
             }
         }
-        
     }
 
+    private func computeDailyForecast(forecast: Forecast) -> DailyForecast {
+        let list = forecast.list ?? []
+        
+        let groups = Dictionary(grouping: list, by: { $0.dateWithoutTime })
+            .filter({ $0.value.count > 6 || $0.key.isToday }) // Keep dey only if we have enough data
+        
+        let dayForecasts = groups
+            .map({ $0.value.computeDayForecast(date: $0.key )})
+            .sorted()
+        
+        return DailyForecast(dailies: dayForecasts)
+    }
 }

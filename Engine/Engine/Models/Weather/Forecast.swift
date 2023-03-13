@@ -34,6 +34,18 @@ public struct Forecast: Codable {
         public let pop: Double?
         public let sys: Sys?
         public let visibility: Int?
+        
+        public var dateWithoutTime: Date {
+            guard let dt else { return Date() }
+            let date = Date(timeIntervalSince1970: TimeInterval(dt))
+            
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .none
+            let dateString = formatter.string(from: date)
+
+            return formatter.date(from: dateString) ?? Date()
+        }
 
         public struct Rain: Codable {
             public let forThreeHours: Double?
@@ -42,5 +54,33 @@ public struct Forecast: Codable {
                 case forThreeHours = "3h"
             }
         }
+    }
+}
+
+extension Array where Element == Forecast.List {
+    func computeDayForecast(date: Date) -> DayForecast {
+        let main = Main(
+            temp: nil,
+            tempMin: self.compactMap({ $0.main?.tempMin }).min(),
+            tempMax: self.compactMap({ $0.main?.tempMax }).max(),
+            feelsLike: nil,
+            humidity: nil,
+            pressure: nil,
+            tempKf: nil,
+            seaLevel: nil,
+            grndLevel: nil
+        )
+        
+        let wind = Wind(
+            speed: nil,
+            deg: nil
+        )
+        
+        var weather: Weather?
+        if self.count >= 4 {
+            weather = self[3].weather?.first
+        }
+        
+        return DayForecast(date: date, main: main, wind: wind, weather: weather)
     }
 }
