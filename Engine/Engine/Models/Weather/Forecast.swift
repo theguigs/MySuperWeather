@@ -35,6 +35,11 @@ public struct Forecast: Codable {
         public let sys: Sys?
         public let visibility: Int?
         
+        public var date: Date {
+            guard let dt else { return Date() }
+            return Date(timeIntervalSince1970: TimeInterval(dt))
+        }
+        
         public var dateWithoutTime: Date {
             guard let dt else { return Date() }
             let date = Date(timeIntervalSince1970: TimeInterval(dt))
@@ -46,14 +51,6 @@ public struct Forecast: Codable {
 
             return formatter.date(from: dateString) ?? Date()
         }
-
-        public struct Rain: Codable {
-            public let forThreeHours: Double?
-            
-            enum CodingKeys: String, CodingKey {
-                case forThreeHours = "3h"
-            }
-        }
     }
 }
 
@@ -64,7 +61,7 @@ extension Array where Element == Forecast.List {
             tempMin: self.compactMap({ $0.main?.tempMin }).min(),
             tempMax: self.compactMap({ $0.main?.tempMax }).max(),
             feelsLike: nil,
-            humidity: nil,
+            humidity: self.compactMap({ $0.main?.humidity }).average,
             pressure: nil,
             tempKf: nil,
             seaLevel: nil,
@@ -72,8 +69,17 @@ extension Array where Element == Forecast.List {
         )
         
         let wind = Wind(
-            speed: nil,
-            deg: nil
+            speed: self.compactMap({ $0.wind?.speed }).average,
+            deg: self.compactMap({ $0.wind?.deg }).average,
+            gust: self.compactMap({ $0.wind?.gust }).average
+        )
+        
+        let clouds = Clouds(
+            all: self.compactMap({ $0.clouds?.all }).average
+        )
+        
+        let rain = Rain(
+            forThreeHours: self.compactMap({ $0.rain?.forThreeHours }).sum
         )
         
         var weather: Weather?
@@ -81,6 +87,13 @@ extension Array where Element == Forecast.List {
             weather = self[3].weather?.first
         }
         
-        return DayForecast(date: date, main: main, wind: wind, weather: weather)
+        return DayForecast(
+            date: date,
+            main: main,
+            wind: wind,
+            clouds: clouds,
+            rain: rain,
+            weather: weather
+        )
     }
 }

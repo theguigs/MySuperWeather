@@ -49,4 +49,15 @@ public struct Weather: Codable {
 public struct Wind: Codable {
     public let speed: Double?
     public let deg: Int?
+    public let gust: Double? // Rafale
 }
+
+// MARK: - Rain
+public struct Rain: Codable {
+    public let forThreeHours: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case forThreeHours = "3h"
+    }
+}
+

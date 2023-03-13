@@ -29,6 +29,8 @@
 		D4867CC829BE97070031483A /* Formatters+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CC729BE97070031483A /* Formatters+Extensions.swift */; };
 		D4867CCA29BE99BB0031483A /* DailyForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CC929BE99BB0031483A /* DailyForecast.swift */; };
 		D4867CCD29BEA5DF0031483A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CCC29BEA5DF0031483A /* Date+Extensions.swift */; };
+		D4867CD729BEAC260031483A /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CD629BEAC260031483A /* TimeInterval+Extensions.swift */; };
+		D4867CD929BEB3290031483A /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CD829BEB3290031483A /* Number+Extensions.swift */; };
 		D49CE0DB29BA431100220C9D /* Engine.docc in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0DA29BA431100220C9D /* Engine.docc */; };
 		D49CE0E129BA431100220C9D /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49CE0D629BA431100220C9D /* Engine.framework */; };
 		D49CE0E629BA431100220C9D /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0E529BA431100220C9D /* EngineTests.swift */; };
@@ -68,6 +70,8 @@
 		D4867CC729BE97070031483A /* Formatters+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatters+Extensions.swift"; sourceTree = "<group>"; };
 		D4867CC929BE99BB0031483A /* DailyForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecast.swift; sourceTree = "<group>"; };
 		D4867CCC29BEA5DF0031483A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		D4867CD629BEAC260031483A /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
+		D4867CD829BEB3290031483A /* Number+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
 		D49CE0D629BA431100220C9D /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49CE0D929BA431100220C9D /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		D49CE0DA29BA431100220C9D /* Engine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Engine.docc; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				D41379E729BD56C600BCD3B1 /* Double+Extensions.swift */,
 				D4867CC729BE97070031483A /* Formatters+Extensions.swift */,
 				D4867CCC29BEA5DF0031483A /* Date+Extensions.swift */,
+				D4867CD629BEAC260031483A /* TimeInterval+Extensions.swift */,
+				D4867CD829BEB3290031483A /* Number+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,10 +337,12 @@
 				D4867CCA29BE99BB0031483A /* DailyForecast.swift in Sources */,
 				D4594E4929BB613B007A2586 /* URLRequest+Extensions.swift in Sources */,
 				D4594E5429BD396A007A2586 /* CitiesService.swift in Sources */,
+				D4867CD729BEAC260031483A /* TimeInterval+Extensions.swift in Sources */,
 				D4594E4529BA468C007A2586 /* EngineConfiguration.swift in Sources */,
 				D4594E5A29BD3DD2007A2586 /* GeocodingEndpoints.swift in Sources */,
 				D4594E5829BD3ADB007A2586 /* GeocodedCity.swift in Sources */,
 				D4867CCD29BEA5DF0031483A /* Date+Extensions.swift in Sources */,
+				D4867CD929BEB3290031483A /* Number+Extensions.swift in Sources */,
 				D4594E4E29BCD16E007A2586 /* WeatherModels.swift in Sources */,
 				D4594E3729BA449E007A2586 /* NetworkClient.swift in Sources */,
 				D4594E4329BA4651007A2586 /* WeatherService.swift in Sources */,

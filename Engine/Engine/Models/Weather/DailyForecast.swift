@@ -16,7 +16,9 @@ public struct DayForecast: Codable {
     
     public let main: Main
     public let wind: Wind
-    
+    public let clouds: Clouds
+    public let rain: Rain
+
     public let weather: Weather?
 }
 

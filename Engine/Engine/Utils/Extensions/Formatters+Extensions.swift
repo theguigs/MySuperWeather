@@ -16,7 +16,14 @@ extension DateFormatter {
     
     public static let shortDayFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E"
+        dateFormatter.dateFormat = "E."
+        return dateFormatter
+    }()
+    
+    public static let longDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .none
+        dateFormatter.dateStyle = .long
         return dateFormatter
     }()
 
@@ -25,6 +32,13 @@ extension DateFormatter {
         dateFormatter.dateFormat = "dd/MM"
         return dateFormatter
     }()
+    
+    public static let shortTimeFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        return dateFormatter
+    }()
+
 }
 
 extension MeasurementFormatter {

@@ -1,5 +1,5 @@
 //
-//  WeatherDetailViewController.swift
+//  WeatherMacroDetailViewController.swift
 //  MySuperWeather
 //
 //  Created by Guillaume Audinet on 13/03/2023.
@@ -8,19 +8,17 @@
 import UIKit
 import Engine
 
-class WeatherDetailViewController: EngineViewController {
+class WeatherMacroDetailViewController: EngineViewController {
     @IBOutlet private weak var tableView: UITableView!
 
     let city: GeocodedCity
-    let forecast: Forecast
 
     var datasource: [DayForecast] {
         return engine.weatherService.dailyForecastWeatherByCity[city]?.dailies ?? []
     }
     
-    init(engine: Engine, city: GeocodedCity, forecast: Forecast) {
+    init(engine: Engine, city: GeocodedCity) {
         self.city = city
-        self.forecast = forecast
 
         super.init(engine: engine)
     }
@@ -33,30 +31,35 @@ class WeatherDetailViewController: EngineViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        configureNavigationBar()
         configureTableView()
     }
     
+    private func configureNavigationBar() {
+        title = city.name ?? ""
+    }
+
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(UINib(nibName: WeatherDetailTableViewCell.kReuseIdentifier, bundle: nil),
-                           forCellReuseIdentifier: WeatherDetailTableViewCell.kReuseIdentifier)
+        tableView.register(UINib(nibName: WeatherMacroDetailTableViewCell.kReuseIdentifier, bundle: nil),
+                           forCellReuseIdentifier: WeatherMacroDetailTableViewCell.kReuseIdentifier)
 
     }
 }
 
-extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension WeatherMacroDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return datasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: WeatherDetailTableViewCell.kReuseIdentifier,
+            withIdentifier: WeatherMacroDetailTableViewCell.kReuseIdentifier,
             for: indexPath
-        ) as? WeatherDetailTableViewCell else {
+        ) as? WeatherMacroDetailTableViewCell else {
             return UITableViewCell()
         }
         
@@ -67,6 +70,14 @@ extension WeatherDetailViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        return
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let dayForecast = datasource[indexPath.row]
+        let weatherMicroDetailViewController = WeatherMicroDetailViewController(
+            engine: engine,
+            city: city,
+            date: dayForecast.date
+        )
+        navigationController?.pushViewController(weatherMicroDetailViewController, animated: true)
     }
 }

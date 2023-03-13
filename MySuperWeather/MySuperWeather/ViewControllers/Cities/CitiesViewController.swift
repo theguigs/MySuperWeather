@@ -101,10 +101,9 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
             
             tableView.deselectRow(at: indexPath, animated: true)
             
-            let weatherDetailViewController = WeatherDetailViewController(
+            let weatherDetailViewController = WeatherMacroDetailViewController(
                 engine: self.engine,
-                city: city,
-                forecast: forecast
+                city: city
             )
             self.navigationController?.pushViewController(weatherDetailViewController, animated: true)
         }

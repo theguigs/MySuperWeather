@@ -1,5 +1,5 @@
 //
-//  WeatherDetailTableViewCell.swift
+//  WeatherMacroDetailTableViewCell.swift
 //  MySuperWeather
 //
 //  Created by Guillaume Audinet on 13/03/2023.
@@ -8,8 +8,8 @@
 import UIKit
 import Engine
 
-class WeatherDetailTableViewCell: UITableViewCell {
-    static let kReuseIdentifier = "WeatherDetailTableViewCell"
+class WeatherMacroDetailTableViewCell: UITableViewCell {
+    static let kReuseIdentifier = "WeatherMacroDetailTableViewCell"
     
     @IBOutlet private weak var dayLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
@@ -18,6 +18,10 @@ class WeatherDetailTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var tempMinLabel: UILabel!
     @IBOutlet private weak var tempMaxLabel: UILabel!
+
+    @IBOutlet private weak var cloudPercentageLabel: UILabel!
+    @IBOutlet private weak var rainPercentageLabel: UILabel!
+    @IBOutlet private weak var rainQuantityLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +34,10 @@ class WeatherDetailTableViewCell: UITableViewCell {
         configureTempsLabel(dayForecast: dayForecast)
         
         configureCurrentWeatherImageView(dayForecast: dayForecast)
-
+        
+        configureCloudPercentageLabel(dayForecast: dayForecast)
+        configureRainPercentageLabel(dayForecast: dayForecast)
+        configureRainQuantityLabel(dayForecast: dayForecast)
     }
     
     private func configureDayLabel(dayForecast: DayForecast) {
@@ -56,5 +63,20 @@ class WeatherDetailTableViewCell: UITableViewCell {
         }
         
         iconImageView.image = image
+    }
+    
+    private func configureCloudPercentageLabel(dayForecast: DayForecast) {
+        guard let cloudsPercentage = dayForecast.clouds.all else { return }
+        cloudPercentageLabel.text = "\(cloudsPercentage) %"
+    }
+    
+    private func configureRainPercentageLabel(dayForecast: DayForecast) {
+        guard let humidityPercentage = dayForecast.main.humidity else { return }
+        rainPercentageLabel.text = "\(humidityPercentage) %"
+    }
+
+    private func configureRainQuantityLabel(dayForecast: DayForecast) {
+        let rainQuantity = dayForecast.rain.forThreeHours ?? 0.0
+        rainQuantityLabel.text = "\(rainQuantity.rounded(decimalCount: 1)) mm"
     }
 }
