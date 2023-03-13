@@ -15,6 +15,8 @@ class CitiesViewController: EngineViewController {
 
     @IBOutlet private weak var tableView: UITableView!
 
+    var cityCurrentWeatherRefreshedCount = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,8 +31,11 @@ class CitiesViewController: EngineViewController {
         engine.citiesService.readCitiesFromCache { [weak self] succeed in
             guard let self, succeed else { return }
             
+            self.cityCurrentWeatherRefreshedCount = 0
             self.engine.citiesService.cities.forEach { city in
-                self.fetchCurrentWeather(city: city)
+                self.fetchCurrentWeather(city: city) {
+                    self.completeFetchingCurrentWeather()
+                }
             }
         }
     }
@@ -52,6 +57,8 @@ class CitiesViewController: EngineViewController {
         navigationItem.rightBarButtonItem = rightItem
     }
 
+    let refreshControl = UIRefreshControl()
+
     private func configureTableView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -59,6 +66,29 @@ class CitiesViewController: EngineViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(UINib(nibName: CityTableViewCell.kReuseIdentifier, bundle: nil),
                            forCellReuseIdentifier: CityTableViewCell.kReuseIdentifier)
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Rafraîchir")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc private func refresh() {
+        self.cityCurrentWeatherRefreshedCount = 0
+        self.engine.citiesService.cities.forEach { city in
+            self.fetchCurrentWeather(city: city) { [weak self] in
+                guard let self else { return }
+                self.completeFetchingCurrentWeather()
+            }
+        }
+    }
+    
+    private func completeFetchingCurrentWeather() {
+        cityCurrentWeatherRefreshedCount += 1
+        if cityCurrentWeatherRefreshedCount == engine.citiesService.cities.count {
+            showHideSections()
+            refreshControl.endRefreshing()
+            tableView.reloadData()
+        }
     }
     
     private func configureButton() {
@@ -135,15 +165,17 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CitiesViewController: AddCityViewControllerDelegate {
     func addCityViewControllerDidAddCity(_ vc: AddCityViewController, city: GeocodedCity) {
-        fetchCurrentWeather(city: city)
-    }
-    
-    private func fetchCurrentWeather(city: GeocodedCity) {
-        engine.weatherService.fetchCurrentWeather(city: city) { [weak self] current, error in
+        fetchCurrentWeather(city: city) { [weak self] in
             guard let self else { return }
             
             self.showHideSections()
             self.tableView.reloadData()
+        }
+    }
+    
+    private func fetchCurrentWeather(city: GeocodedCity, onDone: @escaping () -> Void) {
+        engine.weatherService.fetchCurrentWeather(city: city) { _, _ in
+            onDone()
         }
     }
 }
