@@ -34,6 +34,8 @@
 		D4867CDC29BEB9940031483A /* FileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDB29BEB9940031483A /* FileDataStore.swift */; };
 		D4867CDE29BEBA430031483A /* AsyncCacheHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDD29BEBA430031483A /* AsyncCacheHandling.swift */; };
 		D4867CE029BEBAFD0031483A /* ExpirableFileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */; };
+		D4867CE229BF396C0031483A /* CitiesServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CE129BF396C0031483A /* CitiesServiceTests.swift */; };
+		D4867CE429BF41660031483A /* WeatherServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CE329BF41660031483A /* WeatherServiceTests.swift */; };
 		D49CE0DB29BA431100220C9D /* Engine.docc in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0DA29BA431100220C9D /* Engine.docc */; };
 		D49CE0E129BA431100220C9D /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49CE0D629BA431100220C9D /* Engine.framework */; };
 		D49CE0E629BA431100220C9D /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0E529BA431100220C9D /* EngineTests.swift */; };
@@ -78,6 +80,8 @@
 		D4867CDB29BEB9940031483A /* FileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
 		D4867CDD29BEBA430031483A /* AsyncCacheHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCacheHandling.swift; sourceTree = "<group>"; };
 		D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirableFileDataStore.swift; sourceTree = "<group>"; };
+		D4867CE129BF396C0031483A /* CitiesServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesServiceTests.swift; sourceTree = "<group>"; };
+		D4867CE329BF41660031483A /* WeatherServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTests.swift; sourceTree = "<group>"; };
 		D49CE0D629BA431100220C9D /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49CE0D929BA431100220C9D /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		D49CE0DA29BA431100220C9D /* Engine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Engine.docc; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 			isa = PBXGroup;
 			children = (
 				D49CE0E529BA431100220C9D /* EngineTests.swift */,
+				D4867CE129BF396C0031483A /* CitiesServiceTests.swift */,
+				D4867CE329BF41660031483A /* WeatherServiceTests.swift */,
 			);
 			path = EngineTests;
 			sourceTree = "<group>";
@@ -382,7 +388,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4867CE229BF396C0031483A /* CitiesServiceTests.swift in Sources */,
 				D49CE0E629BA431100220C9D /* EngineTests.swift in Sources */,
+				D4867CE429BF41660031483A /* WeatherServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

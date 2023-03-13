@@ -72,6 +72,9 @@ public class CitiesService: AsyncCacheHandling {
                     completion(nil, error)
             }
         }
-        
+    }
+    
+    public func deleteCitiesCache() {
+        fileDataStore.deleteFileIfExists(in: fileDataStore.rootDirectory(), filename: Self.citiesFilename)
     }
 }

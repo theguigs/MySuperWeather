@@ -1,17 +1,28 @@
 //
-//  EngineTests.swift
+//  WeatherServiceTests.swift
 //  EngineTests
 //
-//  Created by Guillaume Audinet on 09/03/2023.
+//  Created by Guillaume Audinet on 13/03/2023.
 //
 
 import XCTest
-@testable import Engine
+import Engine
 
-final class EngineTests: XCTestCase {
+final class WeatherServiceTests: XCTestCase {
+
+    var engine: Engine?
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        guard let baseURL = URL(string: "https://api.openweathermap.org") else {
+            XCTFail("Base URL is not a valid URL")
+            return
+        }
+
+        let network = EngineConfiguration.Network(baseUrl: baseURL)
+        let configuration = EngineConfiguration(network: network)
+        
+        self.engine = Engine(configuration: configuration)
     }
 
     override func tearDownWithError() throws {
@@ -32,4 +43,5 @@ final class EngineTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+
 }
