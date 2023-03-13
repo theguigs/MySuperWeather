@@ -7,9 +7,9 @@
 
 import Foundation
 
-class Logger: NSObject {
+public class Logger {
     // MARK: Public interface
-    enum LogCategory: String {
+    public enum LogCategory: String {
         case none      = "   "
         case info      = "ℹ️ "
         case warning   = "⚠️ "
@@ -44,27 +44,27 @@ class Logger: NSObject {
 }
 
 /// Shorthand
-func LOG(_ message: String, _ category: Logger.LogCategory = .none, date: Date? = nil) {
+public func LOG(_ message: String, _ category: Logger.LogCategory = .none, date: Date? = nil) {
     Logger.log(message: message, category: category, date: date)
 }
-func SLOG(_ message: String, date: Date? = nil) {
+public func SLOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .success, date: date)
 }
-func ILOG(_ message: String, date: Date? = nil) {
+public func ILOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .info, date: date)
 }
-func WLOG(_ message: String, date: Date? = nil) {
+public func WLOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .warning, date: date)
 }
-func ELOG(_ message: String, date: Date? = nil) {
+public func ELOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .error, date: date)
 }
-func StartLOG(_ message: String, date: Date? = nil) {
+public func StartLOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .start, date: date)
 }
-func RequestLOG(_ message: String, date: Date? = nil) {
+public func RequestLOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .request, date: date)
 }
-func ResponseLOG(_ message: String, date: Date? = nil) {
+public func ResponseLOG(_ message: String, date: Date? = nil) {
     Logger.log(message: message, category: .response, date: date)
 }

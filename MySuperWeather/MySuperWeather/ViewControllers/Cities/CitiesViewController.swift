@@ -25,6 +25,14 @@ class CitiesViewController: EngineViewController {
 
         configureTableView()
         configureButton()
+        
+        engine.citiesService.readCitiesFromCache { [weak self] succeed in
+            guard let self, succeed else { return }
+            
+            self.engine.citiesService.cities.forEach { city in
+                self.fetchCurrentWeather(city: city)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,9 +103,8 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let city = engine.citiesService.cities[indexPath.row]
-        engine.weatherService.fetchHourlyWeather(city: city) { [weak self] forecast, error in
+        engine.weatherService.fetchHourlyWeather(city: city) { [weak self] _, error in
             guard let self else { return }
-            guard let forecast else { return }
             
             tableView.deselectRow(at: indexPath, animated: true)
             
@@ -128,6 +135,10 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CitiesViewController: AddCityViewControllerDelegate {
     func addCityViewControllerDidAddCity(_ vc: AddCityViewController, city: GeocodedCity) {
+        fetchCurrentWeather(city: city)
+    }
+    
+    private func fetchCurrentWeather(city: GeocodedCity) {
         engine.weatherService.fetchCurrentWeather(city: city) { [weak self] current, error in
             guard let self else { return }
             

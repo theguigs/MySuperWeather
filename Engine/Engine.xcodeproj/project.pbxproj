@@ -31,6 +31,9 @@
 		D4867CCD29BEA5DF0031483A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CCC29BEA5DF0031483A /* Date+Extensions.swift */; };
 		D4867CD729BEAC260031483A /* TimeInterval+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CD629BEAC260031483A /* TimeInterval+Extensions.swift */; };
 		D4867CD929BEB3290031483A /* Number+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CD829BEB3290031483A /* Number+Extensions.swift */; };
+		D4867CDC29BEB9940031483A /* FileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDB29BEB9940031483A /* FileDataStore.swift */; };
+		D4867CDE29BEBA430031483A /* AsyncCacheHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDD29BEBA430031483A /* AsyncCacheHandling.swift */; };
+		D4867CE029BEBAFD0031483A /* ExpirableFileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */; };
 		D49CE0DB29BA431100220C9D /* Engine.docc in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0DA29BA431100220C9D /* Engine.docc */; };
 		D49CE0E129BA431100220C9D /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49CE0D629BA431100220C9D /* Engine.framework */; };
 		D49CE0E629BA431100220C9D /* EngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0E529BA431100220C9D /* EngineTests.swift */; };
@@ -72,6 +75,9 @@
 		D4867CCC29BEA5DF0031483A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		D4867CD629BEAC260031483A /* TimeInterval+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Extensions.swift"; sourceTree = "<group>"; };
 		D4867CD829BEB3290031483A /* Number+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Extensions.swift"; sourceTree = "<group>"; };
+		D4867CDB29BEB9940031483A /* FileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
+		D4867CDD29BEBA430031483A /* AsyncCacheHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCacheHandling.swift; sourceTree = "<group>"; };
+		D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpirableFileDataStore.swift; sourceTree = "<group>"; };
 		D49CE0D629BA431100220C9D /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49CE0D929BA431100220C9D /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		D49CE0DA29BA431100220C9D /* Engine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Engine.docc; sourceTree = "<group>"; };
@@ -155,6 +161,7 @@
 		D4594E3329BA447C007A2586 /* Capabilities */ = {
 			isa = PBXGroup;
 			children = (
+				D4867CDA29BEB9880031483A /* Storage */,
 				D4594E3629BA449E007A2586 /* NetworkClient.swift */,
 				D4594E3D29BA457D007A2586 /* Endpoint.swift */,
 			);
@@ -179,6 +186,16 @@
 				D4867CC929BE99BB0031483A /* DailyForecast.swift */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		D4867CDA29BEB9880031483A /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D4867CDB29BEB9940031483A /* FileDataStore.swift */,
+				D4867CDD29BEBA430031483A /* AsyncCacheHandling.swift */,
+				D4867CDF29BEBAFD0031483A /* ExpirableFileDataStore.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 		D49CE0CC29BA431100220C9D = {
@@ -332,9 +349,12 @@
 			files = (
 				D49CE0DB29BA431100220C9D /* Engine.docc in Sources */,
 				D4594E3529BA448F007A2586 /* Engine.swift in Sources */,
+				D4867CE029BEBAFD0031483A /* ExpirableFileDataStore.swift in Sources */,
 				D4867CC829BE97070031483A /* Formatters+Extensions.swift in Sources */,
 				D4594E3E29BA457D007A2586 /* Endpoint.swift in Sources */,
 				D4867CCA29BE99BB0031483A /* DailyForecast.swift in Sources */,
+				D4867CDE29BEBA430031483A /* AsyncCacheHandling.swift in Sources */,
+				D4867CDC29BEB9940031483A /* FileDataStore.swift in Sources */,
 				D4594E4929BB613B007A2586 /* URLRequest+Extensions.swift in Sources */,
 				D4594E5429BD396A007A2586 /* CitiesService.swift in Sources */,
 				D4867CD729BEAC260031483A /* TimeInterval+Extensions.swift in Sources */,

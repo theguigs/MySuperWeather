@@ -18,7 +18,9 @@ public class Engine {
     ) {
         self.networkClient = NetworkClient(configuration: configuration)
         
+        let fileDataStore = FileDataStore()
+        
         self.weatherService = WeatherService(networkClient: networkClient)
-        self.citiesService = CitiesService(networkClient: networkClient)
+        self.citiesService = CitiesService(networkClient: networkClient, fileDataStore: fileDataStore)
     }
 }

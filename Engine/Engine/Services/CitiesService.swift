@@ -7,13 +7,43 @@
 
 import Foundation
 
-public class CitiesService {
+public class CitiesService: AsyncCacheHandling {    
+    static let citiesFilename = "CitiesService.cities"
+    
     let networkClient: NetworkClient
+    let fileDataStore: FileDataStore
+
+    public var cities: [GeocodedCity] = [] {
+        didSet {
+            persistAsync(
+                object: cities,
+                filename: Self.citiesFilename,
+                directory: fileDataStore.rootDirectory()
+            )
+        }
+    }
     
-    public var cities: [GeocodedCity] = []
-    
-    init(networkClient: NetworkClient) {
+    init(networkClient: NetworkClient, fileDataStore: FileDataStore) {
         self.networkClient = networkClient
+        self.fileDataStore = fileDataStore
+    }
+    
+    public func readCitiesFromCache(completion: @escaping (Bool) -> Void) {
+        readFromCacheAsync(
+            filename: Self.citiesFilename,
+            directory: fileDataStore.rootDirectory()
+        ) { [weak self] (cities: [GeocodedCity]?) in
+            guard let self, let cities else {
+                WLOG("[CitiesService] No cities cached data")
+                completion(false)
+                return
+            }
+            
+            ILOG("[CitiesService] cities read from cache")
+            self.cities = cities
+            
+            completion(true)
+        }
     }
         
     public func fetchCities(for query: String, completion: @escaping ([GeocodedCity]?, Error?) -> Void) {
