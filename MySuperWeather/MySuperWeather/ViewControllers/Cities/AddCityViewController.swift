@@ -61,7 +61,13 @@ extension AddCityViewController: UITextFieldDelegate {
         debouncer.debounce { [weak self] in
             guard let self, let query = textField.text else { return }
             
-            self.engine.citiesService.fetchCities(for: query) { cities, error in
+            self.engine.citiesService.fetchCities(for: query) { [weak self] cities, error in
+                guard let self else { return }
+                guard error == nil else {
+                    self.presentErrorAlert(message: error?.localizedDescription ?? "")
+                    return
+                }
+                
                 self.geocodingResult = cities ?? []
                 self.tableView.reloadData()
             }

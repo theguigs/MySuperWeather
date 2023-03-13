@@ -54,7 +54,7 @@ public class CitiesService: AsyncCacheHandling {
     /// - Returns:
     ///     - completion: Give a callback to handle WS response
     ///                Producte tuple of 2 params ([GeocodedCity] & Error) both optionals
-    public func fetchCities(for query: String, completion: @escaping ([GeocodedCity]?, Error?) -> Void) {
+    public func fetchCities(for query: String, completion: @escaping ([GeocodedCity]?, APIError?) -> Void) {
         guard !query.isEmpty else {
             completion([], nil)
             return
@@ -78,11 +78,13 @@ public class CitiesService: AsyncCacheHandling {
                         completion(cities, nil)
                     } catch let error {
                         ELOG("[CitiesService] fetchCities error : \(error)")
-                        completion(nil, error)
+                        let apiError = APIError.unexpectedAPIResponse
+                        completion(nil, apiError)
                     }
                 case .failure(let error):
                     ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
-                    completion(nil, error)
+                    let apiError = APIError.requestFailure
+                    completion(nil, apiError)
             }
         }
     }

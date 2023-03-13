@@ -25,4 +25,14 @@ class EngineViewController: UIViewController {
 
         view.backgroundColor = .white
     }
+    
+    func presentErrorAlert(message: String, okHandler: ((UIAlertAction) -> Void)? = nil) {
+        let alertController = UIAlertController(
+            title: "Erreur",
+            message: message,
+            preferredStyle: .alert
+        )
+        alertController.addAction(.init(title: "Ok", style: .default, handler: okHandler))
+        present(alertController, animated: true, completion: nil)
+    }
 }

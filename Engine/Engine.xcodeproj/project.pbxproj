@@ -39,6 +39,7 @@
 		D4867CE629BF81A80031483A /* GeocodedCity.json in Resources */ = {isa = PBXBuildFile; fileRef = D4867CE529BF81A80031483A /* GeocodedCity.json */; };
 		D4867CE929BF84F40031483A /* CurrentWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = D4867CE829BF84F40031483A /* CurrentWeather.json */; };
 		D4867CEB29BF850F0031483A /* HourlyWeather.json in Resources */ = {isa = PBXBuildFile; fileRef = D4867CEA29BF850F0031483A /* HourlyWeather.json */; };
+		D4867CEE29BF90AB0031483A /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4867CED29BF90AB0031483A /* APIError.swift */; };
 		D49CE0DB29BA431100220C9D /* Engine.docc in Sources */ = {isa = PBXBuildFile; fileRef = D49CE0DA29BA431100220C9D /* Engine.docc */; };
 		D49CE0E129BA431100220C9D /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49CE0D629BA431100220C9D /* Engine.framework */; };
 		D49CE0E729BA431100220C9D /* Engine.h in Headers */ = {isa = PBXBuildFile; fileRef = D49CE0D929BA431100220C9D /* Engine.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -87,6 +88,7 @@
 		D4867CE529BF81A80031483A /* GeocodedCity.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GeocodedCity.json; sourceTree = "<group>"; };
 		D4867CE829BF84F40031483A /* CurrentWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CurrentWeather.json; sourceTree = "<group>"; };
 		D4867CEA29BF850F0031483A /* HourlyWeather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = HourlyWeather.json; sourceTree = "<group>"; };
+		D4867CED29BF90AB0031483A /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		D49CE0D629BA431100220C9D /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49CE0D929BA431100220C9D /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
 		D49CE0DA29BA431100220C9D /* Engine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Engine.docc; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		D4594E3F29BA45B5007A2586 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D4867CEC29BF909F0031483A /* Error */,
 				D4594E4029BA45C3007A2586 /* WeatherEndpoints.swift */,
 				D4594E5929BD3DD2007A2586 /* GeocodingEndpoints.swift */,
 			);
@@ -214,6 +217,14 @@
 				D4867CEA29BF850F0031483A /* HourlyWeather.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D4867CEC29BF909F0031483A /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				D4867CED29BF90AB0031483A /* APIError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		D49CE0CC29BA431100220C9D = {
@@ -395,6 +406,7 @@
 				D4594E4729BB5C19007A2586 /* Logger.swift in Sources */,
 				D4594E5629BD3993007A2586 /* Constants.swift in Sources */,
 				D4867CBB29BE79DA0031483A /* Forecast.swift in Sources */,
+				D4867CEE29BF90AB0031483A /* APIError.swift in Sources */,
 				D41379E129BD4A4500BCD3B1 /* Debouncer.swift in Sources */,
 				D4594E5029BCD263007A2586 /* JSONDecoder+Extensions.swift in Sources */,
 				D4594E4B29BB61AD007A2586 /* Data+Extensions.swift in Sources */,

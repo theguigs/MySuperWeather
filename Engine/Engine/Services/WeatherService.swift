@@ -25,10 +25,10 @@ public class WeatherService {
     ///
     /// - Returns:
     ///     - completion: Give a callback to handle WS response
-    ///                Producte tuple of 2 params (Current & Error) both optionals
-    public func fetchCurrentWeather(city: GeocodedCity, completion: @escaping (Current?, Error?) -> Void) {
+    ///                Producte tuple of 2 params (Current & APIError) both optionals
+    public func fetchCurrentWeather(city: GeocodedCity, completion: @escaping (Current?, APIError?) -> Void) {
         guard let lat = city.lat, let lon = city.lon else {
-            completion(nil, nil)
+            completion(nil, APIError.missingParam)
             return
         }
         
@@ -55,11 +55,13 @@ public class WeatherService {
                         completion(current, nil)
                     } catch let error {
                         ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
-                        completion(nil, error)
+                        let apiError = APIError.unexpectedAPIResponse
+                        completion(nil, apiError)
                     }
                 case .failure(let error):
                     ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
-                    completion(nil, error)
+                    let apiError = APIError.requestFailure
+                    completion(nil, apiError)
             }
         }
     }
@@ -72,9 +74,9 @@ public class WeatherService {
     /// - Returns:
     ///     - completion: Give a callback to handle WS response
     ///                Producte tuple of 2 params (Forecast & Error) both optionals
-    public func fetchHourlyWeather(city: GeocodedCity, completion: @escaping (Forecast?, Error?) -> Void) {
+    public func fetchHourlyWeather(city: GeocodedCity, completion: @escaping (Forecast?, APIError?) -> Void) {
         guard let lat = city.lat, let lon = city.lon else {
-            completion(nil, nil)
+            completion(nil, APIError.missingParam)
             return
         }
         
@@ -100,11 +102,13 @@ public class WeatherService {
                         completion(forecast, nil)
                     } catch let error {
                         ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
-                        completion(nil, error)
+                        let apiError = APIError.unexpectedAPIResponse
+                        completion(nil, apiError)
                     }
                 case .failure(let error):
                     ELOG("[WeatherService] fetchCurrentWeather error : \(error)")
-                    completion(nil, error)
+                    let apiError = APIError.requestFailure
+                    completion(nil, apiError)
             }
         }
     }

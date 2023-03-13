@@ -137,6 +137,11 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
             guard let self else { return }
             
             tableView.deselectRow(at: indexPath, animated: true)
+
+            guard error == nil else {
+                self.presentErrorAlert(message: error?.localizedDescription ?? "")
+                return
+            }
             
             let weatherDetailViewController = WeatherMacroDetailViewController(
                 engine: self.engine,
@@ -174,7 +179,12 @@ extension CitiesViewController: AddCityViewControllerDelegate {
     }
     
     private func fetchCurrentWeather(city: GeocodedCity, onDone: @escaping () -> Void) {
-        engine.weatherService.fetchCurrentWeather(city: city) { _, _ in
+        engine.weatherService.fetchCurrentWeather(city: city) { _, error in
+            guard error == nil else {
+                self.presentErrorAlert(message: error?.localizedDescription ?? "")
+                return
+            }
+
             onDone()
         }
     }
