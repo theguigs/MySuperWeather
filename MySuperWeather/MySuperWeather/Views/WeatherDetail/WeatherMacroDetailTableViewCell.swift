@@ -23,12 +23,22 @@ class WeatherMacroDetailTableViewCell: UITableViewCell {
     @IBOutlet private weak var rainPercentageLabel: UILabel!
     @IBOutlet private weak var rainQuantityLabel: UILabel!
 
+    @IBOutlet private weak var windArrowImageView: UIImageView!
+    @IBOutlet private weak var windSpeedLabel: UILabel!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        windArrowImageView.transform = windArrowImageView.transform.rotated(by: .pi / 2)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Initialization code
+        windArrowImageView.transform = windArrowImageView.transform.rotated(by: .pi / 2)
     }
-    
+
     func configure(dayForecast: DayForecast) {
         configureDayLabel(dayForecast: dayForecast)
         configureTempsLabel(dayForecast: dayForecast)
@@ -38,6 +48,9 @@ class WeatherMacroDetailTableViewCell: UITableViewCell {
         configureCloudPercentageLabel(dayForecast: dayForecast)
         configureRainPercentageLabel(dayForecast: dayForecast)
         configureRainQuantityLabel(dayForecast: dayForecast)
+        
+        configureSpeedImageView(dayForecast: dayForecast)
+        configureSpeedLabel(dayForecast: dayForecast)
     }
     
     private func configureDayLabel(dayForecast: DayForecast) {
@@ -78,5 +91,15 @@ class WeatherMacroDetailTableViewCell: UITableViewCell {
     private func configureRainQuantityLabel(dayForecast: DayForecast) {
         let rainQuantity = dayForecast.rain.forThreeHours ?? 0.0
         rainQuantityLabel.text = "\(rainQuantity.rounded(decimalCount: 1)) mm"
+    }
+    
+    private func configureSpeedImageView(dayForecast: DayForecast) {
+        let windRotation = dayForecast.wind.deg ?? 0
+        windArrowImageView.transform = windArrowImageView.transform.rotated(by: windRotation.deg2rad)
+    }
+    
+    private func configureSpeedLabel(dayForecast: DayForecast) {
+        let windRotation = Int(dayForecast.wind.speed ?? 0.0)
+        windSpeedLabel.text = windRotation.description
     }
 }

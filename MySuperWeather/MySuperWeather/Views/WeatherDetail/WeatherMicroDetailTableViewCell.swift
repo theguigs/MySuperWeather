@@ -8,6 +8,12 @@
 import UIKit
 import Engine
 
+extension Int {
+    var deg2rad: CGFloat {
+        return CGFloat(self)  * .pi / 180
+    }
+}
+
 class WeatherMicroDetailTableViewCell: UITableViewCell {
     static let kReuseIdentifier = "WeatherMicroDetailTableViewCell"
     
@@ -22,11 +28,21 @@ class WeatherMicroDetailTableViewCell: UITableViewCell {
     @IBOutlet private weak var rainPercentageLabel: UILabel!
     @IBOutlet private weak var rainQuantityLabel: UILabel!
 
+    @IBOutlet private weak var windArrowImageView: UIImageView!
+    @IBOutlet private weak var windSpeedLabel: UILabel!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        windArrowImageView.transform = windArrowImageView.transform.rotated(by: .pi / 2)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         // Initialization code
         selectionStyle = .none
+        windArrowImageView.transform = windArrowImageView.transform.rotated(by: .pi / 2)
     }
     
     func configure(listElement: Forecast.List) {
@@ -38,8 +54,11 @@ class WeatherMicroDetailTableViewCell: UITableViewCell {
         configureCloudPercentageLabel(listElement: listElement)
         configureRainPercentageLabel(listElement: listElement)
         configureRainQuantityLabel(listElement: listElement)
+        
+        configureSpeedImageView(listElement: listElement)
+        configureSpeedLabel(listElement: listElement)
     }
-    
+        
     private func configureDayLabel(listElement: Forecast.List) {
         let startTime = listElement.date
         let endTime = listElement.date.addingTimeInterval(TimeInterval.hours(3))
@@ -77,5 +96,15 @@ class WeatherMicroDetailTableViewCell: UITableViewCell {
     private func configureRainQuantityLabel(listElement: Forecast.List) {
         let rainQuantity = listElement.rain?.forThreeHours ?? 0.0
         rainQuantityLabel.text = "\(rainQuantity.rounded(decimalCount: 1)) mm"
+    }
+    
+    private func configureSpeedImageView(listElement: Forecast.List) {
+        let windRotation = listElement.wind?.deg ?? 0
+        windArrowImageView.transform = windArrowImageView.transform.rotated(by: windRotation.deg2rad)
+    }
+    
+    private func configureSpeedLabel(listElement: Forecast.List) {
+        let windRotation = Int(listElement.wind?.speed ?? 0.0)
+        windSpeedLabel.text = windRotation.description
     }
 }
