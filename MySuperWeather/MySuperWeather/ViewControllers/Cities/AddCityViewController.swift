@@ -71,10 +71,31 @@ extension AddCityViewController: UITextFieldDelegate {
 
 extension AddCityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return geocodingResult.count
+        return geocodingResult.isEmpty ? 1 : geocodingResult.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard !geocodingResult.isEmpty else {
+            return provideNoResultCell(tableView, cellForRowAt: indexPath)
+        }
+        
+        return provideResultCell(tableView, cellForRowAt: indexPath)
+    }
+    
+    private func provideNoResultCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: "cell",
+            for: indexPath
+        )
+
+        cell.selectionStyle = .none
+        
+        cell.textLabel?.text = "Aucun résultat"
+        
+        return cell
+    }
+
+    private func provideResultCell(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: CityTableViewCell.kReuseIdentifier,
             for: indexPath
@@ -89,6 +110,8 @@ extension AddCityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard !geocodingResult.isEmpty else { return }
+
         var city = geocodingResult[indexPath.row]
         city.id = UUID()
         
